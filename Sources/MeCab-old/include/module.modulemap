@@ -1,0 +1,4 @@
+
+module MeCab {
+    header "mecab.h"
+}

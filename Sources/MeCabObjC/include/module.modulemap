@@ -1,0 +1,4 @@
+module ManabiMeCab {
+    header "MeCabNode.h"
+    header "MeCabUtil.h"
+}

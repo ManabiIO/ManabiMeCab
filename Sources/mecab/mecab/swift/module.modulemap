@@ -1,0 +1,5 @@
+module mecab [system] {
+    header "../src/mecab.h"
+    export *
+}
+
