@@ -29,20 +29,15 @@ NSString *spacesWithLength(int nSpaces)
 - (NSArray *)parseToNodeWithString:(NSString *)string {
 
 	if (mecab == NULL) {
-		
-#if TARGET_IPHONE_SIMULATOR
-		// Homebrew mecab path
-        //NSString *path = @"/usr/local/Cellar/mecab-ipadic/2.7.0-20070801/lib/mecab/dic/ipadic/";
-		//NSString *path = @"/usr/local/Cellar/mecab/0.996/lib/mecab/dic/ipadic";
-//		NSString *path = @"/usr/local/mecab/lib/mecab/dic/ipadic/";
-        NSString *path = NSBundle.mainBundle.resourcePath;
+#ifdef SWIFTPM_MODULE_BUNDLE
+        NSString *path = [SWIFTPM_MODULE_BUNDLE resourcePath];
 #else
-		NSString *path = NSBundle.mainBundle.resourcePath;
+        NSString *path = [NSBundle bundleForClass: [self class]].resourcePath;
 #endif
-        path = [@"-d " stringByAppendingString:path];
+        path = [[@"-d " stringByAppendingString:path] stringByAppendingString:@"/ipadic"];
 		mecab = mecab_new2(path.UTF8String);
 
-		if (mecab == NULL) {
+        if (mecab == NULL) {
 			fprintf(stderr, "error in mecab_new2: %s\n", mecab_strerror(NULL));
 			
 			return nil;

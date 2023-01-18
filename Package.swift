@@ -21,9 +21,10 @@ let package = Package(
             name: "ManabiMeCab",
             dependencies: ["mecab"],
             resources: [
-                .copy("Resources"),
-            ],
-            linkerSettings: [.linkedLibrary("mecab")]
+                .copy("Resources/ipadic"),
+                .copy("Resources/mecabrc"),
+            ]
+//            linkerSettings: [.linkedLibrary("mecab")]
         ),
         .target(name: "mecab", dependencies: [],
                 path: "Sources/mecab/mecab",
