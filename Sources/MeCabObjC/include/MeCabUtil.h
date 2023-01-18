@@ -6,7 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#include <mecab.h>
+#include "mecab.h"
 
 @interface MeCabUtil : NSObject {
 	mecab_t *mecab;
