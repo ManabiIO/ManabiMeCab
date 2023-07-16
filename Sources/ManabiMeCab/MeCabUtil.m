@@ -34,14 +34,19 @@ NSString *spacesWithLength(int nSpaces)
 #else
         NSString *path = [NSBundle bundleForClass: [self class]].resourcePath;
 #endif
-        path = [[@"-d " stringByAppendingString:path] stringByAppendingString:@"/ipadic"];
+        path = [[@"-d " stringByAppendingString:path] stringByAppendingString:@""];
 		mecab = mecab_new2(path.UTF8String);
 
         if (mecab == NULL) {
-			fprintf(stderr, "error in mecab_new2: %s\n", mecab_strerror(NULL));
-			
-			return nil;
-		}
+            path = [[NSBundle mainBundle] resourcePath];
+            mecab = mecab_new2([[@"-d " stringByAppendingString:path] UTF8String]);
+            
+            if (mecab == NULL) {
+                fprintf(stderr, "error in mecab_new2: %s\n", mecab_strerror(NULL));
+                
+                return nil;
+            }
+        }
 	}
 
 	const mecab_node_t *node;

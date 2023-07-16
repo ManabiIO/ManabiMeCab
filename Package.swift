@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "ManabiMeCab",
+    platforms: [.macOS(.v12), .iOS(.v15)],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(name: "ManabiMeCab", targets: ["ManabiMeCab"]),
@@ -21,7 +22,15 @@ let package = Package(
             name: "ManabiMeCab",
             dependencies: ["mecab"],
             resources: [
-                .copy("Resources/ipadic"),
+                .copy("Resources/ipadic/char.bin"),
+                .copy("Resources/ipadic/dicrc"),
+                .copy("Resources/ipadic/left-id.def"),
+                .copy("Resources/ipadic/matrix.bin"),
+                .copy("Resources/ipadic/pos-id.def"),
+                .copy("Resources/ipadic/rewrite.def"),
+                .copy("Resources/ipadic/right-id.def"),
+                .copy("Resources/ipadic/sys.dic"),
+                .copy("Resources/ipadic/unk.dic"),
                 .copy("Resources/mecabrc"),
             ]
 //            linkerSettings: [.linkedLibrary("mecab")]
