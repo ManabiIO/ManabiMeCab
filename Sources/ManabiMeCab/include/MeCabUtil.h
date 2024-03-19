@@ -9,9 +9,10 @@
 #include "mecab.h"
 
 @interface MeCabUtil : NSObject {
-	mecab_t *mecab;
+    mecab_t *mecab;
 }
 
++ (MeCabUtil *)sharedInstance;
 - (NSArray *)parseToNodeWithString:(NSString *)string;
 
 @end
