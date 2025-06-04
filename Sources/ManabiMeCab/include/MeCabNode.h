@@ -9,10 +9,11 @@
 
 
 @interface MeCabNode : NSObject {
-	
-	NSString *surface;
-	NSString *feature;
-	NSArray *features;
+    
+    NSString *surface;
+    NSString *feature;
+    NSArray *features;
+    NSUInteger featuresCount;
     NSString *spacesBefore;
     NSString *spacesAfter;
 }
@@ -20,6 +21,7 @@
 @property (nonatomic, retain) NSString *surface;
 @property (nonatomic, retain) NSString *feature;
 @property (nonatomic, retain) NSArray *features;
+@property (nonatomic) NSUInteger featuresCount;
 @property (nonatomic, retain) NSString *spacesBefore;
 @property (nonatomic, retain) NSString *spacesAfter;
 
@@ -41,5 +43,5 @@
 - (NSString *)reading;
 // 発音
 - (NSString *)pronunciation;
-	
+
 @end
